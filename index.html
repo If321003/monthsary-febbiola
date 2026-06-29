@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Febbiola 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,400;1,500&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4e1e1; /* Warna pink soft */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Lora', serif;
+        }
+
+        /* Container Buku */
+        .book-container {
+            width: 320px;
+            height: 480px;
+            position: relative;
+            perspective: 1500px;
+        }
+
+        /* Lembaran Kertas */
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fffdf8;
+            border-radius: 3px 12px 12px 3px;
+            box-shadow: inset 4px 0 10px rgba(0,0,0,0.05), 3px 3px 15px rgba(0,0,0,0.15);
+            transform-origin: left center;
+            transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.6s ease-in;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        /* Animasi Halaman Terbalik */
+        .page.flipped {
+            transform: rotateY(-100deg) scale(0.9);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Z-Index agar halaman bertumpuk dengan benar */
+        #page-cover { z-index: 6; background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; text-align: center; justify-content: center; border-radius: 5px 15px 15px 5px;}
+        #page-1 { z-index: 5; }
+        #page-2 { z-index: 4; }
+        #page-3 { z-index: 3; }
+        #page-4 { z-index: 2; }
+        #page-end { z-index: 1; background: #fffdf8; text-align: center; justify-content: center;}
+
+        /* Desain Teks */
+        h1 { font-family: 'Dancing Script', cursive; font-size: 38px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        h2 { font-family: 'Dancing Script', cursive; color: #ff4b82; font-size: 28px; margin-top: 0; border-bottom: 1px dashed #ffb6c1; padding-bottom: 10px; }
+        p { font-size: 14px; line-height: 1.7; color: #444; text-align: justify; }
+
+        /* Efek Foto Perangko */
+        .stamp {
+            width: 85px;
+            height: 100px;
+            background: white;
+            padding: 5px;
+            border: 2px dashed #c0c0c0;
+            box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+            object-fit: cover;
+            float: right;
+            margin: 0 0 10px 15px;
+        }
+        .stamp-left { float: left; margin: 0 15px 10px 0; }
+
+        /* Rotasi Acak untuk Perangko */
+        .rot-1 { transform: rotate(4deg); }
+        .rot-2 { transform: rotate(-5deg); }
+        .rot-3 { transform: rotate(3deg); }
+        .rot-4 { transform: rotate(-4deg); }
+
+        /* Tombol Navigasi */
+        .btn-container { margin-top: auto; display: flex; justify-content: space-between; }
+        button {
+            background: #ff758c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
+        }
+        .btn-cover { margin-top: 30px; background: white; color: #ff758c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="book-container">
+        
+        <!-- SAMPUL BUKU -->
+        <div class="page" id="page-cover">
+            <h1>Our Journey</h1>
+            <p style="color: white; font-style: italic;">8 Months of Love<br>27 Oktober 2025 - Sekarang</p>
+            <p style="font-size: 12px; margin-top: 20px; color: #ffe6e6;">Teruntuk: Febbiola Duri Valentina Naiborhu</p>
+            <div>
+                <button class="btn-cover" onclick="turnPage('page-cover')">Buka Buku 📖</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN 1 -->
+        <div class="page" id="page-1">
+            <h2>Halaman 1</h2>
+            <img src="foto_1.jpeg" class="stamp rot-1" alt="Foto 1" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+1'">
+            <p>Halo cantikku, <b>Febbiola Duri Valentina Naiborhu</b>.</p>
+            <p>Nggak kerasa ya, hari ini kita udah jalan persis 8 bulan bareng-bareng. Sejak 27 Oktober 2025 kemaren, hari-hariku jadi jauh lebih berwarna gara-gara ada kamu.</p>
+            <div class="btn-container">
+                <button onclick="turnBack('page-cover')">⬅️ Tutup</button>
+                <button onclick="turnPage('page-1')">Lanjut ➡️</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN 2 -->
+        <div class="page" id="page-2">
+            <h2>Halaman 2</h2>
+            <img src="foto_2.jpeg" class="stamp stamp-left rot-2" alt="Foto 2" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+2'">
+            <p>Aku cuma mau bilang makasih banyak udah mau nemenin aku sejauh ini. Kamu itu bukan cuma pacar buat aku, tapi juga tempat aku cerita dan tempat aku pulang.</p>
+            <p>Bawelnya kamu, manjanya kamu, semuanya aku suka.</p>
+            <div class="btn-container">
+                <button onclick="turnBack('page-1')">⬅️ Balik</button>
+                <button onclick="turnPage('page-2')">Lanjut ➡️</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN 3 -->
+        <div class="page" id="page-3">
+            <h2>Halaman 3</h2>
+            <img src="foto_3.jpeg" class="stamp rot-3" alt="Foto 3" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+3'">
+            <p>Pasti ada aja ya kadang berantem-berantem kecilnya kita. Tapi dari situ aku sadar, kalau kita berdua tuh sama-sama mau berjuang buat hubungan ini.</p>
+            <p>Makasih ya sayang, udah selalu sabar dan ngertiin aku.</p>
+            <div class="btn-container">
+                <button onclick="turnBack('page-2')">⬅️ Balik</button>
+                <button onclick="turnPage('page-3')">Lanjut ➡️</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN 4 -->
+        <div class="page" id="page-4">
+            <h2>Halaman 4</h2>
+            <img src="foto_4.jpeg" class="stamp stamp-left rot-4" alt="Foto 4" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+4'">
+            <p>Selamat tanggal 27, sayang. Jangan bosen-bosen ya sama aku. Semoga kita bisa ngelewatin bulan-bulan, bahkan tahun-tahun berikutnya bareng terus.</p>
+            <p>You are the best thing that ever happened to me.</p>
+            <div class="btn-container">
+                <button onclick="turnBack('page-3')">⬅️ Balik</button>
+                <button onclick="turnPage('page-4')">Selesai ➡️</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN PENUTUP -->
+        <div class="page" id="page-end">
+            <h1 style="color: #ff4b82; font-size: 45px;">I Love You!</h1>
+            <p style="text-align: center; color: #ff758c; font-size: 20px;">❤️ Febbiola ❤️</p>
+            <div style="margin-top: 40px;">
+                <button onclick="turnBack('page-4')">⬅️ Baca Ulang</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Fungsi JS sederhana untuk animasi buka tutup halaman
+        function turnPage(pageId) {
+            document.getElementById(pageId).classList.add('flipped');
+        }
+        function turnBack(pageId) {
+            document.getElementById(pageId).classList.remove('flipped');
+        }
+    </script>
+</body>
+</html>

@@ -3,91 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk Febbiola 💖</title>
+    <title>Untuk Febbiola Duri Valentina Naiborhu 💖</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,400;1,500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;600&display=swap');
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
             padding: 0;
-            background: #f4e1e1; /* Warna pink soft */
+            background: #fdf5f5;
+            background-image: radial-gradient(#ffb6c1 0.5px, transparent 0.5px), radial-gradient(#ffb6c1 0.5px, #fdf5f5 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
             font-family: 'Lora', serif;
-        }
-
-        /* Container Buku */
-        .book-container {
-            width: 320px;
-            height: 480px;
-            position: relative;
             perspective: 1500px;
         }
 
-        /* Lembaran Kertas */
+        /* Background floating elements */
+        .hearts-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Container Buku Utama */
+        .book-wrapper {
+            position: relative;
+            width: 340px;
+            height: 520px;
+            z-index: 10;
+            transition: transform 0.5s;
+        }
+
+        /* Lembaran Buku */
         .page {
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0;
             left: 0;
-            background: #fffdf8;
-            border-radius: 3px 12px 12px 3px;
-            box-shadow: inset 4px 0 10px rgba(0,0,0,0.05), 3px 3px 15px rgba(0,0,0,0.15);
+            background: #fffdf9;
+            border-radius: 4px 16px 16px 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08), inset 3px 0 8px rgba(0,0,0,0.04);
             transform-origin: left center;
-            transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.6s ease-in;
-            padding: 25px;
-            box-sizing: border-box;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s, z-index 0.5s;
+            padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            z-index: 1;
+            backface-visibility: hidden;
         }
 
-        /* Animasi Halaman Terbalik */
+        /* Efek Garis Buku Binder Tepi Kiri */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+            border-radius: 4px 0 0 4px;
+        }
+
+        /* Animasi Halaman Dibalik */
         .page.flipped {
-            transform: rotateY(-100deg) scale(0.9);
+            transform: rotateY(-140deg) scale(0.95);
             opacity: 0;
             pointer-events: none;
+            z-index: 0 !important;
         }
 
-        /* Z-Index agar halaman bertumpuk dengan benar */
-        #page-cover { z-index: 6; background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; text-align: center; justify-content: center; border-radius: 5px 15px 15px 5px;}
-        #page-1 { z-index: 5; }
-        #page-2 { z-index: 4; }
-        #page-3 { z-index: 3; }
-        #page-4 { z-index: 2; }
-        #page-end { z-index: 1; background: #fffdf8; text-align: center; justify-content: center;}
+        /* Z-Index Layering */
+        #cover-page { z-index: 6; background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; text-align: center; justify-content: center; border-radius: 6px 20px 20px 6px; box-shadow: 0 15px 35px rgba(255,117,140,0.3); }
+        #page1 { z-index: 5; }
+        #page2 { z-index: 4; }
+        #page3 { z-index: 3; }
+        #page4 { z-index: 2; }
+        #end-page { z-index: 1; text-align: center; justify-content: center; background: #fffdf9; }
 
-        /* Desain Teks */
-        h1 { font-family: 'Dancing Script', cursive; font-size: 38px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        h2 { font-family: 'Dancing Script', cursive; color: #ff4b82; font-size: 28px; margin-top: 0; border-bottom: 1px dashed #ffb6c1; padding-bottom: 10px; }
-        p { font-size: 14px; line-height: 1.7; color: #444; text-align: justify; }
+        /* Typography */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+        }
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4b82;
+            font-size: 30px;
+            margin: 0 0 12px 0;
+            border-bottom: 2px dashed #ffe3e8;
+            padding-bottom: 6px;
+        }
+        p {
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: #4a4a4a;
+            text-align: justify;
+            margin: 0 0 12px 0;
+            font-weight: 400;
+        }
+        p b {
+            color: #ff4b82;
+        }
 
-        /* Efek Foto Perangko */
-        .stamp {
-            width: 85px;
-            height: 100px;
+        /* Efek Foto Perangko Klasik (Postage Stamp) */
+        .stamp-box {
+            float: right;
+            margin: 4px 0 12px 14px;
+            position: relative;
             background: white;
             padding: 5px;
-            border: 2px dashed #c0c0c0;
-            box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
-            object-fit: cover;
-            float: right;
-            margin: 0 0 10px 15px;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.12));
+            border: 1px solid #e2e2e2;
         }
-        .stamp-left { float: left; margin: 0 15px 10px 0; }
+        .stamp-box::after {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            border: 3px dashed #ffffff;
+            pointer-events: none;
+        }
+        .stamp-box.left {
+            float: left;
+            margin: 4px 14px 12px 0;
+        }
+        .stamp-img {
+            width: 100px;
+            height: 125px;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #f0f0f0;
+        }
 
-        /* Rotasi Acak untuk Perangko */
-        .rot-1 { transform: rotate(4deg); }
-        .rot-2 { transform: rotate(-5deg); }
-        .rot-3 { transform: rotate(3deg); }
-        .rot-4 { transform: rotate(-4deg); }
+        /* Rotasi Estetik Perangko */
+        .rot-r { transform: rotate(4deg); }
+        .rot-l { transform: rotate(-4deg); }
+
+        /* Pita Ornamen (Scrapbook Vibe) */
+        .tape {
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 55px;
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.48);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transform: rotate(-10deg);
+            backdrop-filter: blur(1px);
+        }
 
         /* Tombol Navigasi */
-        .btn-container { margin-top: auto; display: flex; justify-content: space-between; }
+        .nav-box {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+        }
+        .page-num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            color: #a0a0a0;
+            letter-spacing: 1px;
+        }
         button {
             background: #ff758c;
             color: white;
@@ -95,94 +188,213 @@
             padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
-            font-family: inherit;
-            font-size: 13px;
-            box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(255,117,140,0.2);
+            transition: all 0.2s;
+            outline: none;
         }
-        .btn-cover { margin-top: 30px; background: white; color: #ff758c; font-weight: bold; }
+        button:active {
+            transform: scale(0.95);
+        }
+        .btn-start {
+            background: white;
+            color: #ff758c;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 24px;
+            margin-top: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Dekorasi Tambahan */
+        .sparkle {
+            color: #fdd835;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Heart animation */
+        .floating-heart {
+            position: absolute;
+            color: #ff758c;
+            opacity: 0.6;
+            font-size: 14px;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="book-container">
+    <div class="hearts-bg" id="hearts-container"></div>
+
+    <div class="book-wrapper">
         
-        <!-- SAMPUL BUKU -->
-        <div class="page" id="page-cover">
-            <h1>Our Journey</h1>
-            <p style="color: white; font-style: italic;">8 Months of Love<br>27 Oktober 2025 - Sekarang</p>
-            <p style="font-size: 12px; margin-top: 20px; color: #ffe6e6;">Teruntuk: Febbiola Duri Valentina Naiborhu</p>
+        <!-- ================= SAMPUL BUKU ================= -->
+        <div class="page" id="cover-page">
+            <h1 style="font-size: 42px; margin-bottom: 5px;">Our Journey</h1>
+            <div style="width: 40px; height: 2px; background: white; margin: 15px auto;"></div>
+            <p style="color: white; font-style: italic; text-align: center; font-size: 14px;">
+                8 Months of Beautiful Love<br>27 Oktober 2025 — Sekarang
+            </p>
+            <p style="font-family: 'Poppins', sans-serif; font-size: 11px; margin-top: 30px; color: #ffe4e8; letter-spacing: 0.5px;">
+                Spesial Teruntuk:<br><span style="font-size: 13px; font-weight: 600; color: white;">Febbiola Duri Valentina Naiborhu</span>
+            </p>
             <div>
-                <button class="btn-cover" onclick="turnPage('page-cover')">Buka Buku 📖</button>
+                <button class="btn-start" onclick="next('cover-page')">Buka Buku 📖</button>
             </div>
         </div>
 
-        <!-- HALAMAN 1 -->
-        <div class="page" id="page-1">
-            <h2>Halaman 1</h2>
-            <img src="foto_1.jpeg" class="stamp rot-1" alt="Foto 1" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+1'">
+        <!-- ================= HALAMAN 1 ================= -->
+        <div class="page" id="page1">
+            <h2>Hai, Cantikku...</h2>
+            <div class="stamp-box rot-r">
+                <div class="tape"></div>
+                <img src="foto_1.jpeg" class="stamp-img" alt="Foto 1" onerror="this.src='https://via.placeholder.com/100x125?text=Foto+1'">
+            </div>
             <p>Halo cantikku, <b>Febbiola Duri Valentina Naiborhu</b>.</p>
-            <p>Nggak terasa ya, hari ini kita udah jalan persis 8 bulan bareng-bareng. Sejak 27 Oktober 2025 kemarin.</p>
-            <div class="btn-container">
-                <button onclick="turnBack('page-cover')">⬅️ Tutup</button>
-                <button onclick="turnPage('page-1')">Lanjut ➡️</button>
+            <p>Ngak kerasa ya, hari ini kita udah jalan persis 8 bulan bareng-bareng. Sejak 27 Oktober 2025 kemaren, hari-hariku jadi jauh lebih berwarna gara-gara ada kamu di dalamnya.</p>
+            <p>Orang bilang angka 8 itu angka yang istimewa karena bentuknya yang berputar tanpa ada ujungnya. Sama kayak rasa sayang aku ke kamu sekarang, nggak ada putusnya.</p>
+            
+            <div class="nav-box">
+                <button onclick="back('cover-page')">⬅️ Tutup</button>
+                <span class="page-num">HAL 1</span>
+                <button onclick="next('page1')">Lanjut ➡️</button>
             </div>
         </div>
 
-        <!-- HALAMAN 2 -->
-        <div class="page" id="page-2">
-            <h2>Halaman 2</h2>
-            <img src="foto_2.jpeg" class="stamp stamp-left rot-2" alt="Foto 2" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+2'">
-            <p>Aku cuma mau bilang makasih banyak udah mau nemenin aku sejauh ini. Kamu itu bukan cuma pacar buat aku, tapi juga bisa sebagai teman, tempat aku cerita dan tempat aku pulang.</p>
-            <p>Mulai dari cerewetnya kamu kalau lagi semangat cerita, manjanya kamu pas lagi pengen diperhatiin, ngambek-ngambek kecilnya, sampai lucunya kamu kalau lagi asyik makan. Hal-hal sederhana kayak gitu yang bikin aku makin jatuh cinta sama kamu. Semuanya aku suka.</p>
-            <div class="btn-container">
-                <button onclick="turnBack('page-1')">⬅️ Balik</button>
-                <button onclick="turnPage('page-2')">Lanjut ➡️</button>
+        <!-- ================= HALAMAN 2 ================= -->
+        <div class="page" id="page2">
+            <h2>Tentang Kamu</h2>
+            <div class="stamp-box left rot-l">
+                <div class="tape"></div>
+                <img src="foto_2.jpeg" class="stamp-img" alt="Foto 2" onerror="this.src='https://via.placeholder.com/100x125?text=Foto+2'">
+            </div>
+            <p>Aku cuma mau bilang makasih banyak udah mau nemenin aku sejauh ini. Kamu itu bukan cuma sekadar pacar buat aku, tapi juga tempat aku cerita, tempat aku ketawa, dan tempat aku pulang kalau lagi capek sama keadaan.</p>
+            <p><b>Mulai dari cerewetnya kamu kalau lagi semangat cerita, manjanya kamu pas lagi pengen diperhatiin, ngambek-ngambek kecilnya, sampai lucunya kamu kalau lagi asyik makan. Jujur, hal-hal sederhana kayak gitu yang bikin aku makin jatuh cinta sama kamu tiap harinya. Semuanya aku suka,</b> tanpa terkecuali.</p>
+            
+            <div class="nav-box">
+                <button onclick="back('page1')">⬅️ Balik</button>
+                <span class="page-num">HAL 2</span>
+                <button onclick="next('page2')">Lanjut ➡️</button>
             </div>
         </div>
 
-        <!-- HALAMAN 3 -->
-        <div class="page" id="page-3">
-            <h2>Halaman 3</h2>
-            <img src="foto_3.jpeg" class="stamp rot-3" alt="Foto 3" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+3'">
-            <p>Pasti ada aja ya kadang berantem-berantem kecilnya kita. Tapi aku sadar, kalau kita berdua sama-sama mau berjuang buat hubungan ini.</p>
-            <p>Makasih ya sayang, udah selalu sabar dan ngertiin aku.</p>
-            <div class="btn-container">
-                <button onclick="turnBack('page-2')">⬅️ Balik</button>
-                <button onclick="turnPage('page-3')">Lanjut ➡️</button>
+        <!-- ================= HALAMAN 3 ================= -->
+        <div class="page" id="page3">
+            <h2>Saling Berjuang</h2>
+            <div class="stamp-box rot-r">
+                <div class="tape"></div>
+                <img src="foto_3.jpeg" class="stamp-img" alt="Foto 3" onerror="this.src='https://via.placeholder.com/100x125?text=Foto+3'">
+            </div>
+            <p>Aku tahu perjalanan kita nggak selalu mulus, pasti ada aja bumbu-bumbu berantem kecil atau salah paham di antara kita berdua.</p>
+            <p>Tapi dari semua hal itu, aku malah makin sadar kalau kita berdua sama-sama hebat karena mau saling bertahan dan berjuang buat hubungan ini. Makasih ya sayang, udah selalu sabar ngadepin aku dan selalu mau ngertiin ego aku selama 8 bulan ini.</p>
+            
+            <div class="nav-box">
+                <button onclick="back('page2')">⬅️ Balik</button>
+                <span class="page-num">HAL 3</span>
+                <button onclick="next('page3')">Lanjut ➡️</button>
             </div>
         </div>
 
-        <!-- HALAMAN 4 -->
-        <div class="page" id="page-4">
-            <h2>Halaman 4</h2>
-            <img src="foto_4.jpeg" class="stamp stamp-left rot-4" alt="Foto 4" onerror="this.src='https://via.placeholder.com/85x100?text=Foto+4'">
-            <p>Selamat tanggal 27, sayang. Jangan bosen-bosen ya sama aku. Semoga kita bisa ngelewatin bulan-bulan dan tahun-tahun berikutnya bareng terus.</p>
-            <p>You are the best thing that ever happened to me.</p>
-            <div class="btn-container">
-                <button onclick="turnBack('page-3')">⬅️ Balik</button>
-                <button onclick="turnPage('page-4')">Selesai ➡️</button>
+        <!-- ================= HALAMAN 4 ================= -->
+        <div class="page" id="page4">
+            <h2>Untuk Nanti & Selamanya</h2>
+            <div class="stamp-box left rot-l">
+                <div class="tape"></div>
+                <img src="foto_4.jpeg" class="stamp-img" alt="Foto 4" onerror="this.src='https://via.placeholder.com/100x125?text=Foto+4'">
+            </div>
+            <p>Selamat tanggal 27 yang ke-8 kalinya, sayangku. Jangan pernah bosen-bosen ya sama segala kekurangan aku.</p>
+            <p>Semoga di bulan-bulan depan, bahkan sampai tahun-tahun berikutnya, tangan kita bakal tetap saling menggenggam erat melewati semuanya bareng-bareng.</p>
+            <p>Tetap jadi Febbiola yang aku kenal dan aku sayang ya. <i>You are simply the best thing that ever happened in my life.</i> <span class="sparkle">✨</span></p>
+            
+            <div class="nav-box">
+                <button onclick="back('page3')">⬅️ Balik</button>
+                <span class="page-num">HAL 4</span>
+                <button onclick="next('page4')">Selesai 💖</button>
             </div>
         </div>
 
-        <!-- HALAMAN PENUTUP -->
-        <div class="page" id="page-end">
-            <h1 style="color: #ff4b82; font-size: 45px;">I Love You!</h1>
-            <p style="text-align: center; color: #ff758c; font-size: 20px;">Febbiola</p>
-            <div style="margin-top: 40px;">
-                <button onclick="turnBack('page-4')">⬅️ Baca Ulang</button>
+        <!-- ================= HALAMAN PENUTUP ================= -->
+        <div class="page" id="end-page">
+            <h1 style="color: #ff4b82; font-size: 46px; margin-bottom: 0;">I Love You!</h1>
+            <p style="text-align: center; color: #ff758c; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; margin-top: 5px;">
+                ✨ Febbiola Duri Valentina Naiborhu ✨
+            </p>
+            <div style="font-size: 32px; margin: 20px 0;">💝</div>
+            <p style="text-align: center; font-style: italic; color: #888; font-size: 12px; padding: 0 20px;">
+                "Karena bagiku, kebahagiaan paling sederhana adalah melihat senyum kamu setiap hari."
+            </p>
+            <div style="margin-top: 25px;">
+                <button onclick="back('page4')" style="background: #a0a0a0;">⬅️ Baca Ulang</button>
             </div>
         </div>
 
     </div>
 
     <script>
-        // Fungsi JS sederhana untuk animasi buka tutup halaman
-        function turnPage(pageId) {
-            document.getElementById(pageId).classList.add('flipped');
+        // Fungsi Animasi Buka Halaman
+        function next(id) {
+            document.getElementById(id).classList.add('flipped');
+            if(id === 'page4') {
+                createExplosion();
+            }
         }
-        function turnBack(pageId) {
-            document.getElementById(pageId).classList.remove('flipped');
+
+        // Fungsi Animasi Balik Halaman
+        function back(id) {
+            document.getElementById(id).classList.remove('flipped');
         }
+
+        // Efek Hati Berjatuhan/Melayang secara random di background
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartSymbols = ['❤️', '💖', '🌸', '💕'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.fontSize = (Math.random() * 10 + 12) + 'px';
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }, 400);
+        }
+
+        // Kejutan efek hati meluber saat halaman terakhir dibuka
+        function createExplosion() {
+            const container = document.getElementById('hearts-container');
+            for(let i=0; i<30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('floating-heart');
+                    heart.innerText = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                    container.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 4000);
+                }, i * 50);
+            }
+        }
+
+        // Jalankan background hearts saat window dimuat
+        window.onload = createFloatingHearts;
     </script>
 </body>
 </html>

@@ -123,20 +123,23 @@
         }
 
         /* Efek Foto Perangko Klasik (Postage Stamp) */
+        /* Efek Foto Perangko Klasik (Postage Stamp) */
         .stamp-box {
             float: right;
             margin: 4px 0 12px 14px;
             position: relative;
             background: white;
-            padding: 5px;
+            padding: 6px; /* Ketebalan bingkai putih */
             filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.12));
             border: 1px solid #e2e2e2;
+            display: inline-block;
+            width: max-content; /* INI KUNCINYA: memaksa kotak rapat dengan foto */
         }
         .stamp-box::after {
             content: '';
             position: absolute;
-            top: -3px; left: -3px; right: -3px; bottom: -3px;
-            border: 3px dashed #ffffff;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            border: 2px dashed #ffffff;
             pointer-events: none;
         }
         .stamp-box.left {
@@ -144,9 +147,8 @@
             margin: 4px 14px 12px 0;
         }
         .stamp-img {
-            width: 100px;
-            height: 125px;
-            object-fit: cover;
+            width: 110px; /* Lebar foto, bisa dibesarkan jadi 120px jika ingin lebih besar */
+            height: auto; /* Memastikan foto tidak gepeng */
             display: block;
             border: 1px solid #f0f0f0;
         }
@@ -251,7 +253,7 @@
                 Spesial Teruntuk:<br><span style="font-size: 13px; font-weight: 600; color: white;">Febbiola Duri Valentina Naiborhu</span>
             </p>
             <div>
-                <button class="btn-start" onclick="next('cover-page')">Buka Buku 📖</button>
+                <button class="btn-start" onclick="next('cover-page')">Buka Buku</button>
             </div>
         </div>
 
